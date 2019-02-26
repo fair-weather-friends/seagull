@@ -15,6 +15,7 @@ app.post('/signup', userController.createUserTable, userController.signIn, funct
 });
 
 app.post('/weather', weatherController.getWeather, function (req, res) {
+    console.log('hit');
     res.send(JSON.stringify(res.locals.data));
 });
 
