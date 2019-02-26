@@ -11,6 +11,22 @@
 
 import * as types from '../constants/actionTypes';
 
+export const getMessages = data => (dispatch) => {
+    fetch('/api/getMessages')
+        .then(res => res.json())
+        .then(jsonData => {
+            dispatch({
+                type: types.GET_MESSAGES,
+                payload: jsonData,
+            });
+        });
+};
+
+export const addMessage = message => ({
+    type: types.ADD_MESSAGE,
+    payload: message
+})
+
 export const signUp = data => (dispatch) => {
     fetch('/api/signup', {
         method: 'POST',
