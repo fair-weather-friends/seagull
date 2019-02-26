@@ -1,12 +1,8 @@
 const pg = require('pg');
+const uri = process.env.POSTGRES_URI;
 
-const conString = "postgres://dwicftzb:K0biL61criGfG_Svf4dCUZPwsWuUhtxj@baasu.db.elephantsql.com:5432/dwicftzb";
-const db = new pg.Client(conString);
-db.connect(function (err) {
-    if (err) {
-        return console.error('could not connect to postgres', err);
-    };
-    console.log('connected');
+const pool = new pg.Pool({
+    connectionString: uri
 });
 
-module.exports = db;
+module.exports = pool;
