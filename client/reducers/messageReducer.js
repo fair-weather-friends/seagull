@@ -35,7 +35,7 @@ const messageReducer = (state = initialState, action) => {
 
         case types.ADD_MESSAGE:
             const messages = state.messages.slice()
-            const newMessage = {author: 'Rob', id: '4', content: action.payload}
+            const newMessage = action.payload;
             messages.push(newMessage)
             return {
                 ...state,
