@@ -10,12 +10,21 @@ body {
 .wrapper {
     background-size: cover;
     height: 100%;
-    padding: 0 15px;
+    padding: 0;
     transition: all .3s ease-in-out;
 }
 
+.half {
+	float: left;
+	width: 50%;
+}
+
+.inner {
+	padding: 20px;
+}
+
 input.search {
-	width: 700px;
+	width: 100%;
 	font-size: 62px;
 	background: transparent;
 	border-top: none;

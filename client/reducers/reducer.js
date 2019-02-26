@@ -17,7 +17,7 @@ const initialState = {
     gradientStart: '#44bbea',
     gradientEnd: '#a6e7f6',
     loggedIn: false,
-    user: ''
+    user: 'Jay'
 };
 
 const reducer = (state = initialState, action) => {

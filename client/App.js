@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from './actions/actions';
 
 import WeatherComponent from './components/weather';
+import Messenger from './container/messenger';
 
 class App extends Component {
 
@@ -21,7 +22,7 @@ class App extends Component {
         }
         return (
             <div>
-                {!this.props.loggedIn &&
+                {/* {!this.props.loggedIn &&
                     <div className="signup-wrapper">
                         <form id='signUpForm' onSubmit={this.props.signUp}>
                             <input name='name' placeholder='first name' />
@@ -31,17 +32,18 @@ class App extends Component {
                         </form>
                     </div>
                 }
-                {this.props.loggedIn &&
-                    <div className='wrapper' style={backgroundStyle}>
-                        <WeatherComponent
-                            user={this.props.user}
-                            currentTemp={this.props.currentTemp}
-                            currentCity={this.props.currentCity}
-                            updateCurrentCity={this.props.updateCurrentCity}
-                            getWeather={this.props.getWeather}
-                        />
-                    </div>
-                }
+                {this.props.loggedIn && */}
+                <div className='wrapper' style={backgroundStyle}>
+                    <WeatherComponent
+                        user={this.props.user}
+                        currentTemp={this.props.currentTemp}
+                        currentCity={this.props.currentCity}
+                        updateCurrentCity={this.props.updateCurrentCity}
+                        getWeather={this.props.getWeather}
+                    />
+                    <Messenger />
+                </div>
+                {/* } */}
             </div>
         )
     }
