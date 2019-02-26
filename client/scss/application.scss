@@ -1,3 +1,8 @@
+#messagesWrapper {
+    height: calc(100% - 80px);
+    overflow: scroll;
+}
+
 .mine {
 	text-align: right;
 }

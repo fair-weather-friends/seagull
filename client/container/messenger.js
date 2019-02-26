@@ -14,12 +14,19 @@ class Messenger extends Component {
         this.props.getMessages()
     }
 
+    componentDidUpdate(){
+        const messagesWrapper = document.getElementById('messagesWrapper')
+        messagesWrapper.scrollTop = messagesWrapper.scrollHeight
+    }
+
     render() {
         const messages = this.props.messages.map((message, i) => <Message key={i} message={message}/> )
         return (
             <div className='half'>
                 <div className='inner'>
-                    {messages}
+                    <div id="messagesWrapper">
+                        {messages}
+                    </div>
                     <form className="formBox" onSubmit={(e) => e.preventDefault()}>
                         <input id='messageInput' type='text'/>
                         <button className='messageButton' onClick={this.props.addMessage} >+</button>
