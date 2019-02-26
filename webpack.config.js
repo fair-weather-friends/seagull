@@ -14,7 +14,7 @@ module.exports = {
         publicPath: '/build/',
         proxy: {
             '/api': {
-                target: 'http://localhost:3000',
+                target: 'http://192.168.0.219:3000',
                 pathRewrite: { '^/api': '' }
             }
         }

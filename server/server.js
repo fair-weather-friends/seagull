@@ -9,7 +9,6 @@ const http = require('http');
 app.use(bodyParser.json());
 //app.use(express.static(__dirname + './../')); //serves the index.html
 
-
 app.post('/signup', userController.createUserTable, userController.signIn, function (req, res) {
     res.json(res.locals.name);
 });
