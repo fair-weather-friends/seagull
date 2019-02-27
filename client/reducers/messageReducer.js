@@ -1,28 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-    messages: [
-        {
-        user: 'Rob',
-        id: '0',
-        content: 'Yo!'
-        },
-        {
-        user: 'Jay',
-        id: '1',
-        content: 'Hey'
-        },
-        {
-        user: 'Tristan',
-        id: '2',
-        content: 'Hey fellas'
-        },
-        {
-        user: 'Kenny',
-        id: '3',
-        content: "What's up?"
-        }
-    ],
+    messages: [],
 };
 
 const messageReducer = (state = initialState, action) => {
@@ -33,7 +12,7 @@ const messageReducer = (state = initialState, action) => {
                 messages: action.payload
             }
 
-        case types.ADD_MESSAGE:
+        case types.POST_MESSAGE:
             const messages = state.messages.slice()
             const newMessage = action.payload;
             messages.push(newMessage)
@@ -41,7 +20,11 @@ const messageReducer = (state = initialState, action) => {
                 ...state,
                 messages
             }
-
+        case types.ADD_MESSAGE:
+            return {
+                ...state,
+                messages: [...state.messages, action.payload]
+            }
         default:
             return state;
     }

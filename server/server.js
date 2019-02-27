@@ -6,7 +6,7 @@ const weatherController = require('./controllers/weatherController');
 const messagerController = require('./controllers/messagerController');
 const bodyParser = require('body-parser');
 const http = require('http').Server(app);
-const io = require('socket.io', {reconnection: true, transports: ['websockets']})(http);
+const io = require('socket.io', { reconnection: true, transports: ['websockets'] })(http);
 
 app.use(bodyParser.json());
 //app.use(express.static(__dirname + './../')); //serves the index.html
@@ -22,23 +22,25 @@ app.post('/weather', weatherController.getWeather, function (req, res) {
     res.json(res.locals.data);
 });
 
-//MESSENGER
-app.get('/getMessages', messagerController.getMessages, function (req, res) {
-    console.log('got messages');
-    res.json(res.locals.messages);
-});
-
-app.post('/createMessage', messagerController.createMessage, function (req, res) {
-    console.log('created message: ', res.locals.message);
-    res.json(res.locals.message);
-})
-
+//WEB SOCKETS
 io.on('connection', (socket) => {
     console.log('a user is connected')
     socket.on('client-connect', (data) => {
         console.log(data, socket.id)
         socket.emit('server-connect', 'hey from server')
+    });
+
+    //MESSENGER ROUTES
+    app.get('/getMessages', messagerController.getMessages, function (req, res) {
+        res.json(res.locals.messages);
+    });
+
+    app.post('/createMessage', messagerController.createMessage, function (req, res) {
+        io.emit('message', res.locals.message);
+        res.status(200).end();
     })
+
+
 })
 
 http.listen(3000, function () {

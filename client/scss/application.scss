@@ -80,7 +80,7 @@ body {
 
 input.search {
 	width: 100%;
-	font-size: 62px;
+	font-size: 54px;
 	background: transparent;
 	border-top: none;
 	border-left: none;
@@ -95,15 +95,35 @@ input.search:focus {
 }
 
 .weather-data {
-	font-size: 326px;
+	font-size: 54px;
 	font-weight: 100;
 	color: #efefef;
-	position: absolute;
+	position: relative;
 	bottom: 0;
+	clear: both;
+}
+
+.weather-wrapper span {
+	float: left;
+	color: #efefef;
+	font-weight: 100;
+	font-size: 54px;
+}
+
+.weather-wrapper form {
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 10px;
 }
 
 span.deg {
-	font-size: 144px;
-	display: block;
-	float: right;
+	font-size: 36px !important;
+	top: -2px;
+	position: absolute;
+}
+
+.user-welcome {
+	color: #fff;
+	font-size: 54px;
+	font-weight: 100;
 }
