@@ -1,0 +1,109 @@
+#messagesWrapper {
+    height: calc(100% - 80px);
+    overflow-y: scroll;
+	padding-right: 35px;
+}
+
+.mine {
+	text-align: right;
+}
+
+.messageBubble {
+	font-size: 20px;
+	padding: 5px;
+	border-radius: 8px;
+	display: inline-block;
+	background-color: whitesmoke;
+}
+
+.messageAuthor {
+	padding-bottom: 3px;
+	opacity: .5;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+#root {
+    height: 100%;
+}
+
+.wrapper {
+    background-size: cover;
+    height: 100%;
+    padding: 0;
+    transition: all .3s ease-in-out;
+}
+
+.formBox {
+	position: absolute;
+	bottom: 0;
+	width: 48%;
+}
+
+.formBox input {
+	width: 90%;
+	padding: 10px;
+	border-radius: 8px 0 0 8px;
+	background-color: whitesmoke;
+	border: none;
+}
+
+// .formBox input:active {
+// 	outline: none;
+// }
+
+.formBox input:focus {
+	outline: none;
+}
+
+.messageButton {
+	height: 33px;
+	border: none;
+	background: lightgrey;
+	color: white;
+	font-size: 18px;
+	border-radius: 0 5px 5px 0;
+	position: absolute;
+}
+
+.half {
+	float: left;
+	width: 50%;
+}
+
+.inner {
+	padding: 20px;
+}
+
+input.search {
+	width: 100%;
+	font-size: 62px;
+	background: transparent;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #efefef;
+	color: #efefef;
+	font-weight: 100;
+}
+
+input.search:focus {
+    outline: none;
+}
+
+.weather-data {
+	font-size: 326px;
+	font-weight: 100;
+	color: #efefef;
+	position: absolute;
+	bottom: 0;
+}
+
+span.deg {
+	font-size: 144px;
+	display: block;
+	float: right;
+}
