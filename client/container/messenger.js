@@ -17,23 +17,27 @@ class Messenger extends Component {
             this.socket.emit('client-connect', 'hey from client')
             this.socket.on('server-connect', (data) => {
                 console.log(data)
-            })
+            });
+            this.socket.on('message', (message) => {
+                console.log('message from io: ', message);
+                this.props.addMessage(message);
+            });
         })
     }
 
-    componentDidMount(){
+    componentDidMount() {
         console.log('mounted');
         this.props.getMessages();
         this.connectToSocket();
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         const messagesWrapper = document.getElementById('messagesWrapper')
         messagesWrapper.scrollTop = messagesWrapper.scrollHeight
     }
 
     render() {
-        const messages = this.props.messages.map((message, i) => <Message key={i} message={message}/> )
+        const messages = this.props.messages.map((message, i) => <Message key={i} message={message} />)
         return (
             <div className='half'>
                 <div className='inner'>
@@ -41,8 +45,8 @@ class Messenger extends Component {
                         {messages}
                     </div>
                     <form className="formBox" onSubmit={(e) => e.preventDefault()}>
-                        <input id='messageInput' type='text'/>
-                        <button className='messageButton' onClick={this.props.addMessage} >+</button>
+                        <input id='messageInput' type='text' />
+                        <button className='messageButton' onClick={this.props.postMessage} >+</button>
                     </form>
                 </div>
             </div>
@@ -56,10 +60,13 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     getMessages: () => dispatch(actions.getMessages()),
-    addMessage: () => {
+    postMessage: () => {
         const input = document.getElementById('messageInput');
-        dispatch(actions.addMessage(input.value))
+        dispatch(actions.postMessage(input.value))
         input.value = "";
+    },
+    addMessage: (message) => {
+        dispatch(actions.addMessage(message));
     }
 });
 
